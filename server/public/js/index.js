@@ -61,6 +61,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var syy = new _lottery2.default();
+
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -9206,104 +9208,197 @@
 
 	'use strict';
 
-	var _base = __webpack_require__(330);
-
-	var _base2 = _interopRequireDefault(_base);
-
-	var _timer = __webpack_require__(331);
-
-	var _timer2 = _interopRequireDefault(_timer);
-
-	var _calculate = __webpack_require__(332);
-
-	var _calculate2 = _interopRequireDefault(_calculate);
-
-	var _interface = __webpack_require__(333);
-
-	var _interface2 = _interopRequireDefault(_interface);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 330 */
-/***/ (function(module, exports) {
-
-	"use strict";
-
-/***/ }),
-/* 331 */
-/***/ (function(module, exports) {
-
-	'use strict';
-
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	__webpack_require__(2);
+
+	var _base = __webpack_require__(330);
+
+	var _base2 = _interopRequireDefault(_base);
+
+	var _timer = __webpack_require__(332);
+
+	var _timer2 = _interopRequireDefault(_timer);
+
+	var _calculate = __webpack_require__(333);
+
+	var _calculate2 = _interopRequireDefault(_calculate);
+
+	var _interface = __webpack_require__(334);
+
+	var _interface2 = _interopRequireDefault(_interface);
+
+	var _jquery = __webpack_require__(331);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var Timer = function () {
-	  function Timer() {
-	    _classCallCheck(this, Timer);
-	  }
+	var copyProperties = function copyProperties(target, src) {
+	    var _iteratorNormalCompletion = true;
+	    var _didIteratorError = false;
+	    var _iteratorError = undefined;
 
-	  _createClass(Timer, [{
-	    key: 'countDown',
-	    value: function countDown(end, update, handle) {
-	      var now = Date.now(),
-	          self = this;
-	      if (now > end) {
-	        handle.call(self);
-	      } else {
-	        var leftTime = end - now;
+	    try {
+	        for (var _iterator = Reflect.ownKeys(src)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	            var key = _step.value;
 
-	        var msS = 1000,
-	            msM = msS * 60,
-	            msH = msS * 60,
-	            msD = msH * 24;
+	            if (key !== 'prototype' && key !== 'constructor' && key !== 'name') {
+	                var desc = Object.getOwnPropertyDescriptor(src, key);
+	                Object.defineProperty(target, key, desc);
+	            }
+	        }
+	    } catch (err) {
+	        _didIteratorError = true;
+	        _iteratorError = err;
+	    } finally {
+	        try {
+	            if (!_iteratorNormalCompletion && _iterator.return) {
+	                _iterator.return();
+	            }
+	        } finally {
+	            if (_didIteratorError) {
+	                throw _iteratorError;
+	            }
+	        }
+	    }
+	};
 
-	        var leftD = Math.floor(leftTime / msD),
-	            leftH = Math.floor(leftTime % msD / msH),
-	            leftM = Math.floor(leftTime % msH / msM),
-	            leftS = Math.floor(leftTime % msM / msS);
+	var mix = function mix() {
+	    var Mix = function Mix() {
+	        _classCallCheck(this, Mix);
+	    };
 
-	        var arr = ['<em>%{leftD}</em>\u5929', '<em>%{leftH}</em>\u65F6', '<em>%{leftM}</em>\u5206', '<em>%{leftS}</em>\u79D2'];
+	    for (var _len = arguments.length, mixins = Array(_len), _key = 0; _key < _len; _key++) {
+	        mixins[_key] = arguments[_key];
+	    }
 
-	        // the time string should not start with 0
-	        if (leftD > 0) {
-	          // nothing to do
-	        } else if (leftH > 0) {
-	          arr.splice(0, 1);
-	        } else if (leftD > 0) {
-	          arr.splice(0, 2);
-	        } else {
-	          arr.splice(0, 3);
+	    var _iteratorNormalCompletion2 = true;
+	    var _didIteratorError2 = false;
+	    var _iteratorError2 = undefined;
+
+	    try {
+	        for (var _iterator2 = mixins[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	            var mixin = _step2.value;
+
+	            copyProperties(Mix, mixin);
+	            copyProperties(Mix.prototype, mixin.prototype);
+	        }
+	    } catch (err) {
+	        _didIteratorError2 = true;
+	        _iteratorError2 = err;
+	    } finally {
+	        try {
+	            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	                _iterator2.return();
+	            }
+	        } finally {
+	            if (_didIteratorError2) {
+	                throw _iteratorError2;
+	            }
+	        }
+	    }
+
+	    return Mix;
+	};
+
+	var Lottery = function (_mix) {
+	    _inherits(Lottery, _mix);
+
+	    function Lottery() {
+	        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'syy';
+	        var cname = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '11选5';
+	        var issue = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '**';
+	        var state = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '**';
+
+	        _classCallCheck(this, Lottery);
+
+	        var _this = _possibleConstructorReturn(this, (Lottery.__proto__ || Object.getPrototypeOf(Lottery)).call(this));
+
+	        _this.name = name;
+	        _this.cname = cname;
+	        _this.issue = issue;
+	        _this.ele = '';
+	        _this.omit = new Map();
+	        _this.openCode = new Set();
+	        _this.openCodeList = new Set();
+	        _this.modeList = new Map();
+	        _this.number = new Set();
+	        _this.issueEle = '#curr_issue';
+	        _this.countDownEle = '#countdown';
+	        _this.stateEle = '.state_el';
+	        _this.cartEle = '.codelist';
+	        _this.omitEle = '';
+	        _this.curMode = 'r5';
+	        _this.initModeList();
+	        _this.initNumber();
+	        _this.updateState();
+	        _this.initEvent();
+	        return _this;
+	    }
+
+	    _createClass(Lottery, [{
+	        key: 'updateState',
+	        value: function updateState() {
+	            var self = this;
+	            this.getState().then(function (res) {
+	                self.issue = res.issue;
+	                self.endTime = res.end_time;
+	                self.state = res.state;
+	                (0, _jquery2.default)(self.issueEle).text(res.issue);
+	                self.countDown(res.end_time, function (time) {
+	                    (0, _jquery2.default)(self.countDownEle).html(time);
+	                }, function () {
+	                    setTimeout(function () {
+	                        self.updateState();
+	                        self.getOmit(self.issue).then(function (res) {
+	                            console.log('data in getOmit:', res);
+	                        }).catch(function (err) {
+	                            console.log('error in getOmit:\n ', err);
+	                        });
+	                        self.getOpenCode(self.issue).then(function (res) {
+	                            console.log('data in getOpenCode: ', res);
+	                        }).catch(function (err) {
+	                            console.log('error in getOpenCode:\n', err);
+	                        });
+	                    }, 500);
+	                });
+	            });
 	        }
 
-	        self.leftTime = arr.join('');
-	        update.call(self, self.leftTime);
-	        setTimeout(function () {
-	          self.countDown(end, update, handle);
-	        }, msS);
-	      }
-	    }
-	  }]);
+	        /** 
+	         * 绑定事件
+	        */
 
-	  return Timer;
-	}();
+	    }, {
+	        key: 'initEvent',
+	        value: function initEvent() {
+	            var self = this;
+	            (0, _jquery2.default)('#plays').on('click', 'li', self.changeModeNav.bind(self));
+	            (0, _jquery2.default)('.boll-list').on('click', '.btn-boll', self.toggleCodeSelected.bind(self));
+	            (0, _jquery2.default)('#confirm_sel_code').on('click', self.addCode.bind(self));
+	            (0, _jquery2.default)('.dxjo').on('click', 'li', self.assistSelect.bind(self));
+	            (0, _jquery2.default)('.qkmethod').on('click', '.btn-middle', self.getRandomCode.bind(self));
+	        }
+	    }]);
 
-	exports.default = Timer;
+	    return Lottery;
+	}(mix(_base2.default, _calculate2.default, _interface2.default, _timer2.default));
+
+	exports.default = Lottery;
 
 /***/ }),
-/* 332 */
-/***/ (function(module, exports) {
-
-	"use strict";
-
-/***/ }),
-/* 333 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9312,9 +9407,11 @@
 	    value: true
 	});
 
+	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _jquery = __webpack_require__(334);
+	var _jquery = __webpack_require__(331);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -9322,82 +9419,367 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var Interface = function () {
-	    function Interface() {
-	        _classCallCheck(this, Interface);
+	var Base = function () {
+	    function Base() {
+	        _classCallCheck(this, Base);
 	    }
 
-	    _createClass(Interface, [{
-	        key: 'getOmit',
-	        value: function getOmit(issue) {
-	            var self = this;
-	            return new Promise(function (resolve, reject) {
-	                _jquery2.default.ajax({
-	                    url: '/get/issue',
-	                    data: {
-	                        issue: issue
-	                    },
-	                    dataType: 'json',
-	                    success: function success(res) {
-	                        self.setOmit(res.data);
-	                        resolve.call(self, res);
-	                    },
-	                    fail: function fail(err) {
-	                        reject.call(self, err);
-	                    }
-	                });
+	    _createClass(Base, [{
+	        key: 'initModeList',
+
+
+	        /**
+	         * 初始化奖金和玩法(Map类型)
+	         */
+	        value: function initModeList() {
+	            this.modeList.set('r2', {
+	                bonus: 6,
+	                tip: '从01~11中任选2个或多个号码，所选号码与开奖号码任意两个号码相同，即中奖<em class="red">6</em>元',
+	                name: '任二'
+	            }).set('r3', {
+	                bonus: 19,
+	                tip: '从01~11中任选3个或多个号码，所选号码与开奖号码任意三个号码相同，即中奖<em class="red">19</em>元',
+	                name: '任三'
+	            }).set('r4', {
+	                bonus: 78,
+	                tip: '从01~11中任选4个或多个号码，所选号码与开奖号码任意四个号码相同，即中奖<em class="red">78</em>元',
+	                name: '任四'
+	            }).set('r5', {
+	                bonus: 540,
+	                tip: '从01~11中任选5个或多个号码，所选号码与开奖号码相同，即中奖<em class="red">540</em>元',
+	                name: '任五'
+	            }).set('r6', {
+	                bonus: 90,
+	                tip: '从01~11中任选6个或多个号码，某6个所选号码包含5个开奖号码，即中奖<em class="red">6</em>元',
+	                name: '任六'
+	            }).set('r7', {
+	                bonus: 26,
+	                tip: '从01~11中任选7个或多个号码，某7个所选号码包含5个开奖号码，即中奖<em class="red">26</em>元',
+	                name: '任七'
+	            }).set('r8', {
+	                bonus: 9,
+	                tip: '从01~11中任选8个或多个号码，某8个所选号码包含5个开奖号码，即中奖<em class="red">9</em>元',
+	                name: '任八'
 	            });
 	        }
+
+	        /**
+	         * 初始化备选号码(Set类型)
+	         */
+
 	    }, {
-	        key: 'getOpenCode',
-	        value: function getOpenCode(issue) {
+	        key: 'initNumber',
+	        value: function initNumber() {
+	            for (var i = 0; i < 12; i++) {
+	                this.number.add(('' + i).padStart(2, '0'));
+	            }
+	        }
+
+	        /**
+	         * 设置往期开奖遗漏号码数据
+	         * @param {Map} omit 往期开奖遗漏号码数据 
+	         */
+
+	    }, {
+	        key: 'setOmit',
+	        value: function setOmit(omit) {
 	            var self = this;
-	            return new Promise(function (resolve, reject) {
-	                _jquery2.default.ajax({
-	                    url: '/get/opencode',
-	                    data: {
-	                        issue: issue
-	                    },
-	                    dataType: 'json',
-	                    success: function success(res) {
-	                        self.setOpenCode(res.data);
-	                        resolve.call(self, res);
-	                    },
-	                    fail: function fail(err) {
-	                        reject.call(self, err);
+	            // 保存数据
+	            self.omit.clear();
+	            var _iteratorNormalCompletion = true;
+	            var _didIteratorError = false;
+	            var _iteratorError = undefined;
+
+	            try {
+	                for (var _iterator = omit.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	                    var _step$value = _slicedToArray(_step.value, 2),
+	                        index = _step$value[0],
+	                        item = _step$value[1];
+
+	                    self.omit.set(index, item);
+	                }
+
+	                // 渲染数据
+	            } catch (err) {
+	                _didIteratorError = true;
+	                _iteratorError = err;
+	            } finally {
+	                try {
+	                    if (!_iteratorNormalCompletion && _iterator.return) {
+	                        _iterator.return();
 	                    }
-	                });
+	                } finally {
+	                    if (_didIteratorError) {
+	                        throw _iteratorError;
+	                    }
+	                }
+	            }
+
+	            (0, _jquery2.default)(self.omitEle).each(function (index, item) {
+	                (0, _jquery2.default)(item).text(self.omit.get(index));
 	            });
 	        }
+
+	        /**
+	         * 设置开奖号码
+	         * @param {Set} code 开奖号码 
+	         */
+
 	    }, {
-	        key: 'getState',
-	        value: function getState(issue) {
+	        key: 'setOpenCode',
+	        value: function setOpenCode(code) {
 	            var self = this;
-	            return new Promise(function (resolve, reject) {
-	                _jquery2.default.ajax({
-	                    url: '/get/state',
-	                    data: {
-	                        issue: issue
-	                    },
-	                    dataType: 'json',
-	                    success: function success(res) {
-	                        resolve.call(self, res);
-	                    },
-	                    fail: function fail(err) {
-	                        reject.call(self, err);
+	            // 保存数据
+	            self.openCode.clear();
+	            var _iteratorNormalCompletion2 = true;
+	            var _didIteratorError2 = false;
+	            var _iteratorError2 = undefined;
+
+	            try {
+	                for (var _iterator2 = code.values()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	                    var item = _step2.value;
+
+	                    self.openCode.add(item);
+	                }
+
+	                // 渲染数据
+	            } catch (err) {
+	                _didIteratorError2 = true;
+	                _iteratorError2 = err;
+	            } finally {
+	                try {
+	                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	                        _iterator2.return();
 	                    }
-	                });
+	                } finally {
+	                    if (_didIteratorError2) {
+	                        throw _iteratorError2;
+	                    }
+	                }
+	            }
+
+	            self.updateOpenCode && self.updateOpenCode.call(self, self.code);
+	        }
+
+	        /**
+	         * 号码选中与取消切换
+	         * @param {Object} event 号码点击事件
+	         */
+
+	    }, {
+	        key: 'toggleCodeSelected',
+	        value: function toggleCodeSelected(event) {
+	            var self = this;
+	            var $cur = (0, _jquery2.default)(event.currentTarget);
+	            $cur.toggleClass('btn-boll-active');
+	            self.getCount();
+	        }
+
+	        /**
+	         * 切换玩法
+	         * 高亮显示、保存当前玩法，清空备选号码选中状态，重新计算金额, 清空选号列表
+	         * @param {Object} event 玩法按钮点击事件
+	         */
+
+	    }, {
+	        key: 'changeModeNav',
+	        value: function changeModeNav(event) {
+	            var self = this;
+	            var $cur = (0, _jquery2.default)(event.currentTarget);
+	            $cur.addClass('active').siblings().removeClass('active');
+	            self.curMode = $cur.attr('desc').toLocaleLowerCase();
+	            (0, _jquery2.default)('#zx_sm span').html(self.modeList.get(self.curMode).tip);
+	            (0, _jquery2.default)('.boll-list .btn-boll').removeClass('btn-boll-active');
+	            (0, _jquery2.default)(self.cartEle).html('');
+	            self.getCount();
+	        }
+
+	        /**
+	         * 号码选取辅助按钮点击时的处理函数
+	         * @param {Object} event 辅助选取按钮点击事件  
+	         */
+
+	    }, {
+	        key: 'assistSelect',
+	        value: function assistSelect(event) {
+	            event.preventDefault();
+	            var self = this,
+	                $cur = (0, _jquery2.default)(event.currentTarget),
+	                index = $cur.index(),
+	                $bolls = (0, _jquery2.default)('.boll-list .btn-boll'),
+	                actCls = 'btn-boll-active';
+	            $bolls.removeClass('btn-boll-active');
+	            switch (index) {
+	                case 0:
+	                    $bolls.addClass(actCls);
+	                    break;
+	                case 1:
+	                    $bolls.each(function (index, item) {
+	                        if (item.textContent - 5 > 0) {
+	                            (0, _jquery2.default)(item).addClass(actCls);
+	                        }
+	                    });
+	                    break;
+	                case 2:
+	                    $bolls.each(function (index, item) {
+	                        if (item.textContent - 6 < 0) {
+	                            (0, _jquery2.default)(item).addClass(actCls);
+	                        }
+	                    });
+	                    break;
+	                case 3:
+	                    $bolls.each(function (index, item) {
+	                        if (item.textContent % 2 === 1) {
+	                            (0, _jquery2.default)(item).addClass(actCls);
+	                        }
+	                    });
+	                    break;
+	                case 4:
+	                    $bolls.each(function (index, item) {
+	                        if (item.textContent % 2 === 0) {
+	                            (0, _jquery2.default)(item).addClass(actCls);
+	                        }
+	                    });
+	                    break;
+	                default:
+	                    break;
+	            }
+	            self.getCount();
+	        }
+
+	        /**
+	         * 获取当前彩票名称
+	         */
+
+	    }, {
+	        key: 'getName',
+	        value: function getName() {
+	            return this.name;
+	        }
+
+	        /**
+	         * 添加选号
+	         */
+
+	    }, {
+	        key: 'addCode',
+	        value: function addCode() {
+	            var self = this;
+	            var $active = (0, _jquery2.default)('.boll-list .btn-boll-active').text().match(/\d{2}/g);
+	            var active = $active ? $active.length : 0;
+	            var count = self.computeCount(active, self.curMode);
+	            if (count > 0) {
+	                self.addCodeItem($active.join(' '), self.curMode, self.modeList.get(self.curMode).name, count);
+	            }
+	        }
+	        /**
+	         * 添加一次选号(具体实现)
+	         * @param {string} code 选择的号码
+	         * @param {string} mode 玩法模式
+	         * @param {string} modeName 玩法模式名称
+	         * @param {number} count 注数
+	         */
+
+	    }, {
+	        key: 'addCodeItem',
+	        value: function addCodeItem(code, mode, modeName, count) {
+	            var self = this;
+	            var tpl = '\n            <li codes="' + mode + ' | ' + code + '" bonus="' + count * 2 + '" count="' + count + '">\n                <div class="code">\n                    <b>' + modeName + (count > 1 ? '复式' : '单式') + '</b>\n                    <b class="em">' + code + '</b>\n                    [' + count + '\u6CE8,<em class="code-list-money">' + count * 2 + '</em>\u5143]\n                </div>\n            </li>\n        ';
+	            (0, _jquery2.default)(self.cartEle).append(tpl);
+	            self.getTotal();
+	        }
+
+	        /**
+	         * 根据当前选号预测中奖可能性并渲染到页面
+	         */
+
+	    }, {
+	        key: 'getCount',
+	        value: function getCount() {
+	            var self = this,
+	                active = (0, _jquery2.default)('.boll-list .btn-boll-active').length,
+	                count = self.computeCount(active, self.curMode),
+	                range = self.computeBonus(active, self.curMode),
+	                money = count * 2,
+	                win1 = range[0] - money,
+	                win2 = range[1] - money;
+	            var tpl = void 0,
+	                c1 = win1 < 0 && win2 < 0 ? Math.abs(win1) : win1,
+	                c2 = win1 < 0 && win2 < 0 ? Math.abs(win2) : win2;
+	            if (count === 0) {
+	                tpl = '\u60A8\u9009\u4E86 <b class="red">' + count + '</b> \u6CE8, \u5171<b class="red">' + count * 2 + '</b> \u5143';
+	            } else if (range[0] === range[1]) {
+	                tpl = '\u60A8\u9009\u4E86 <b>' + count + '</b> \u6CE8, \u5171 <b>' + count * 2 + '</b> \u5143, <em>\u82E5\u4E2D\u5956, \u5956\u91D1: <strong class="red">' + range[0] + '</strong> \u5143, \u60A8\u5C06' + (win1 >= 0 ? '盈利' : '亏损') + ' <strong class="' + (win1 >= 0 ? 'red' : 'green') + '">' + Math.abs(win1) + '</strong> \u5143</em>';
+	            } else {
+	                tpl = '\u60A8\u9009\u4E86 <b>' + count + '</b> \u6CE8, \u5171 <b>' + count * 2 + '</b> \u5143, <em>\u82E5\u4E2D\u5956, \u5956\u91D1: <strong class="red">' + range[0] + '</strong> \u81F3 <strong class="red">' + range[1] + '</strong> \u5143, \u60A8\u5C06' + (win1 < 0 && win2 < 0 ? '亏损' : '盈利') + ' <strong class="' + (win1 >= 0 ? 'red' : 'green') + '">' + c1 + '</strong> \u81F3 <strong class="' + (win2 >= 0 ? 'red' : 'green') + '">' + c2 + '</strong> \u5143</em>';
+	            }
+
+	            (0, _jquery2.default)('.sel_info').html(tpl);
+	        }
+
+	        /**
+	         * 计算所有投注的总金额
+	         */
+
+	    }, {
+	        key: 'getTotal',
+	        value: function getTotal() {
+	            var count = 0;
+	            (0, _jquery2.default)('.codelist li').each(function (index, item) {
+	                count += (0, _jquery2.default)(item).attr('count') * 1;
 	            });
+	            (0, _jquery2.default)('#count').text(count);
+	            (0, _jquery2.default)('#money').text(count * 2);
+	        }
+
+	        /**
+	         * 生成随机数
+	         * @param {number} num 获取的号码个数
+	         */
+
+	    }, {
+	        key: 'getRandom',
+	        value: function getRandom(num) {
+	            var arr = [],
+	                index = void 0;
+	            var number = Array.from(this.number);
+	            while (num--) {
+	                index = Number.parseInt(Math.random() * number.length);
+	                arr.push(number[index]);
+	                number.splice(index, 1);
+	            }
+	            return arr.join(' ');
+	        }
+
+	        /**
+	         * 响应点击，添加随机选号或清空选号列表 
+	         * @param {object} event 机选/清空按钮点击事件 
+	         */
+
+	    }, {
+	        key: 'getRandomCode',
+	        value: function getRandomCode(event) {
+	            event.preventDefault();
+	            var num = event.currentTarget.getAttribute('count'),
+	                mode = this.curMode.match(/\d+/g)[0],
+	                self = this;
+	            if (num === '0') {
+	                (0, _jquery2.default)(self.cartEle).html('');
+	            } else {
+	                for (var i = 0; i < num; i++) {
+	                    self.addCodeItem(self.getRandom(mode), self.curMode, self.modeList.get(self.curMode).name, 1);
+	                }
+	            }
 	        }
 	    }]);
 
-	    return Interface;
+	    return Base;
 	}();
 
-	exports.default = Interface;
+	exports.default = Base;
 
 /***/ }),
-/* 334 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -19322,6 +19704,295 @@
 		return jQuery;
 	});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(325)(module)))
+
+/***/ }),
+/* 332 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Timer = function () {
+	  function Timer() {
+	    _classCallCheck(this, Timer);
+	  }
+
+	  _createClass(Timer, [{
+	    key: 'countDown',
+	    value: function countDown(end, update, handle) {
+	      var now = Date.now(),
+	          self = this;
+	      if (now > end) {
+	        handle.call(self);
+	      } else {
+	        var leftTime = end - now;
+	        var msS = 1000,
+	            msM = msS * 60,
+	            msH = msM * 60,
+	            msD = msH * 24;
+
+	        var leftD = Math.floor(leftTime / msD),
+	            leftH = Math.floor(leftTime % msD / msH),
+	            leftM = Math.floor(leftTime % msH / msM),
+	            leftS = Math.floor(leftTime % msM / msS);
+
+	        var arr = ['<em>' + leftD + '</em>\u5929', '<em>' + leftH + '</em>\u65F6', '<em>' + leftM + '</em>\u5206', '<em>' + leftS + '</em>\u79D2'];
+
+	        // the time string should not start with 0
+	        if (leftD > 0) {
+	          // nothing to do
+	        } else if (leftH > 0) {
+	          arr.splice(0, 1);
+	        } else if (leftM > 0) {
+	          arr.splice(0, 2);
+	        } else {
+	          arr.splice(0, 3);
+	        }
+
+	        self.leftTime = arr.join('');
+	        update.call(self, self.leftTime);
+	        setTimeout(function () {
+	          self.countDown(end, update, handle);
+	        }, msS);
+	      }
+	    }
+	  }]);
+
+	  return Timer;
+	}();
+
+	exports.default = Timer;
+
+/***/ }),
+/* 333 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Calculate = function () {
+	    function Calculate() {
+	        _classCallCheck(this, Calculate);
+	    }
+
+	    _createClass(Calculate, [{
+	        key: 'computeCount',
+
+	        /**
+	         * 计算注数
+	         * @param {number} selected 选择的彩票号码总数
+	         * @param {string} mode 玩法模式
+	         */
+	        value: function computeCount(selected, mode) {
+	            var count = 0;
+	            var exist = this.modeList.has(mode);
+	            if (exist && mode.at(0) === 'r') {
+	                count = Calculate.combine(mode.split('')[1], selected);
+	            }
+	            return count;
+	        }
+
+	        /**
+	         * 
+	         * @param {number} selected 选择的彩票号码总数
+	         * @param {number} mode 玩法模式
+	         */
+
+	    }, {
+	        key: 'computeBonus',
+	        value: function computeBonus(selected, mode) {
+	            var min = 0,
+	                max = 0,
+	                self = this;
+	            var ref = 5,
+	                //real真实开奖号码个数
+	            all = 11,
+	                //all可选号码总数
+	            modex = +mode.at(1),
+	                //mode中奖模式个数(3-8)
+	            comb = Calculate.combine;
+	            if (mode.at(0) === 'r' && modex <= selected) {
+	                // modex > selected时，必然不能中奖，max，min都保持为0
+	                if (modex <= ref) {
+	                    max = comb(modex, Math.min(ref, selected));
+	                } else {
+	                    max = comb(modex - ref, selected - ref);
+	                }
+
+	                if (modex <= ref) {
+	                    min = comb(modex, selected - (all - ref));
+	                } else {
+	                    min = (selected === all) * comb(modex - ref, all - ref);
+	                }
+	            }
+
+	            return [min, max].map(function (item) {
+	                return item * self.modeList.get(mode).bonus;
+	            });
+	        }
+
+	        /**
+	         * 计算从all中取some个的组合数
+	         * @param {number} some 
+	         * @param {number} all 
+	         */
+
+	    }], [{
+	        key: 'combine',
+	        value: function combine(some, all) {
+	            all = Math.max(0, all);
+	            some = Math.max(0, some);
+
+	            var factorial = function factorial(result, n) {
+	                if (n > 1) {
+	                    return factorial(n * result, n - 1);
+	                } else if (n === 1) {
+	                    return result;
+	                } else {
+	                    return 0;
+	                }
+	            };
+
+	            if (all >= some && some > 0) {
+	                return all > some ? factorial(1, all) / factorial(1, some) / factorial(1, all - some) : 1;
+	            } else {
+	                return 0;
+	            }
+	        }
+	    }]);
+
+	    return Calculate;
+	}();
+
+	exports.default = Calculate;
+
+/***/ }),
+/* 334 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _jquery = __webpack_require__(331);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Interface = function () {
+	    function Interface() {
+	        _classCallCheck(this, Interface);
+	    }
+
+	    _createClass(Interface, [{
+	        key: 'getOmit',
+
+
+	        /**
+	         * 获取往期遗漏号码数据
+	         * @param {彩票期号} issue 
+	         */
+	        value: function getOmit(issue) {
+	            var self = this;
+	            return new Promise(function (resolve, reject) {
+	                _jquery2.default.ajax({
+	                    url: '/get/omit',
+	                    data: {
+	                        issue: issue
+	                    },
+	                    dataType: 'json',
+	                    success: function success(res) {
+	                        self.setOmit(res.data);
+	                        resolve.call(self, res);
+	                    },
+	                    fail: function fail(err) {
+	                        reject.call(self, err);
+	                    }
+	                });
+	            });
+	        }
+
+	        /**
+	         * 获取开奖号码
+	         * @param {彩票期号} issue 
+	         */
+
+	    }, {
+	        key: 'getOpenCode',
+	        value: function getOpenCode(issue) {
+	            var self = this;
+	            return new Promise(function (resolve, reject) {
+	                _jquery2.default.ajax({
+	                    url: '/get/opencode',
+	                    data: {
+	                        issue: issue
+	                    },
+	                    dataType: 'json',
+	                    success: function success(res) {
+	                        self.setOpenCode(res.data);
+	                        resolve.call(self, res);
+	                    },
+	                    fail: function fail(err) {
+	                        reject.call(self, err);
+	                    }
+	                });
+	            });
+	        }
+	        /**
+	         * 
+	         * @param {number} issue  彩票期号
+	         */
+
+	    }, {
+	        key: 'getState',
+	        value: function getState(issue) {
+	            var self = this;
+	            return new Promise(function (resolve, reject) {
+	                _jquery2.default.ajax({
+	                    url: '/get/state',
+	                    data: {
+	                        issue: issue
+	                    },
+	                    dataType: 'json',
+	                    success: function success(res) {
+	                        console.log('data in getState:', res);
+	                        resolve.call(self, res);
+	                    },
+	                    fail: function fail(err) {
+	                        reject.call(self, err);
+	                    }
+	                });
+	            }).catch(function (error) {
+	                console.log('error in getState: \n', error);
+	            });
+	        }
+	    }]);
+
+	    return Interface;
+	}();
+
+	exports.default = Interface;
 
 /***/ })
 /******/ ]);

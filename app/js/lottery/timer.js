@@ -6,10 +6,9 @@ class Timer {
       handle.call(self);
     }else{
       let leftTime = end - now;
-      
       const msS = 1000,
       msM = msS * 60,
-      msH = msS * 60,
+      msH = msM * 60,
       msD = msH * 24;
 
       let leftD = Math.floor(leftTime / msD),
@@ -18,8 +17,8 @@ class Timer {
       leftS = Math.floor((leftTime % msM) / msS);
       
       let arr = [
-        `<em>%{leftD}</em>天`, `<em>%{leftH}</em>时`, 
-        `<em>%{leftM}</em>分`, `<em>%{leftS}</em>秒`
+        `<em>${leftD}</em>天`, `<em>${leftH}</em>时`, 
+        `<em>${leftM}</em>分`, `<em>${leftS}</em>秒`
       ];
 
       // the time string should not start with 0
@@ -27,7 +26,7 @@ class Timer {
         // nothing to do
       }else if(leftH > 0){
         arr.splice(0,1);
-      }else if(leftD > 0){
+      }else if(leftM > 0){
         arr.splice(0,2);
       }else{
         arr.splice(0,3);
